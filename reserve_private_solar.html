@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>RFO Private Night Reservation</title>
+<link href="css/centered.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div class="container">
+  <div class="header"><img src="images/LogoHeadbigger2PS.png" width="960" height="95" alt="RFO Logo" /><!-- end .header --></div>
+  <div class="content">
+    <p>Private event SOLAR</p>
+    <p>Explanatory text here</p>
+
+<!-- BEGINNING OF FORM -->
+<form method='post' action='http://www.rfo.org/pay/getHostedPaymentForm.php'>
+<input type='hidden' name='description' value='Private Solar Event Fee to VMOA, TaxID 47-0877393' />
+<input type='hidden' name='origin' value='privateSolar' />
+<center>
+<table border='0' cellspacing='0' cellpadding='6'>
+<tr> <td>First Name</td> <td><input type='text' size='60' name='firstName'></td> </tr>
+<tr> <td>Last Name</td> <td><input type='text' size='60' name='lastName'></td> </tr>
+<tr> <td>Company</td> <td><input type='text' size='60' name='company'></td> </tr>
+<tr> <td>Street Address</td> <td><input type='text' size='60' name='address'></td> </tr>
+<tr> <td>City, State Zip</td>
+<td><input type='text' size='36' name='city'>,&nbsp; 
+<input type='text' size='4' name='state' maxlength='2'> &nbsp;&nbsp;
+<input type='text' size='10' name='zip' maxlength='12'>
+<input type='hidden' name='country' value='USA' />
+</td>
+</tr>
+<tr> <td>Phone Number</td> <td><input type='text' size='60' name='phoneNumber'></td> </tr>
+<tr> <td>Email Address</td> <td><input type='text' size='60' name='email'></td> </tr>
+
+<!-- INSERT SPECIFIC PAY FORM FIELDS HERE -->
+      <tr>
+        <td>Type of Event</td>
+        <td>Private Solar Viewing
+      </tr>
+      <tr>
+        <td>Private Event Fee</td>
+        <td>$85</td>
+        <input type='hidden' name='amount' value='85.00' />
+      </tr>
+        <td>Date of Event</td>
+        <td><input type='text' size='60' name='dateOfEvent' /></td>
+      </tr>
+      <tr>
+        <td>Name of Group</td>
+        <td><input type='text' size='60' name='groupName' /></td>
+      </tr>
+      <tr>
+        <td>Number of Adults</td>
+        <td><input type='text' size='60' name='adultCount' /></td>
+      </tr>
+      <tr>
+        <td>Number of Children</td>
+        <td><input type='text' size='60' name='childCount' /></td>
+      </tr>
+<!-- END OF SPECIFIC EVENT FORM FIELDS -->
+        <tr>
+          <td>Opt In?</td>
+          <td><input type='checkbox' name='emailOptIn' checked="checked" />
+            The VMOA may contact me by email in the future </td>
+        </tr>
+        <tr>
+          <td>Please send me <br />
+            more information:</td>
+          <td><input type='checkbox' name='docentVolunteerInfo' />
+            Becoming a Docent Volunteer<br />
+            <input type='checkbox' name='volunteerTimeExpertise' />
+            Volunteering time and expertise<br />
+            <input type='checkbox' name='corporateSponsorship' />
+            Corporate Sponsorship<br />
+            <input type='checkbox' name='endowmentFund' />
+            VMOA Endowment Fund
+            </p></td>
+        </tr>
+        <tr>
+          <td>Comments:</td>
+          <td><textarea name='message' rows='6' cols='50'></textarea></td>
+        </tr>
+      </table>
+      <center>
+        <input type='submit' value='Proceed to Confirmation Page' />
+      </center>
+    </form>
+    </td>
+    </tr>
+    </table>
+    </center>
+<!-- END OF FORM -->
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p>Back to Rent Page LINK</p>
+    <p>&nbsp;</p>
+    <!-- end .content --></div>
+  <!-- end .container --></div>
+</body>
+</html>
