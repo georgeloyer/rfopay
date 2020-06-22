@@ -1,0 +1,88 @@
+<!-- BEGINNING OF FORM -->
+<form method='post' action='http://www.rfo.org/pay/getHostedPaymentForm.php'>
+<input type='hidden' name='description' value='Donation to VMOA, TaxID 47-0877393' />
+<input type='hidden' name='origin' value='donate' />
+<center>
+<table border='0' cellspacing='0' cellpadding='6'>
+<tr> <td>First Name</td> <td><input type='text' size='60' name='firstName'></td> </tr>
+<tr> <td>Last Name</td> <td><input type='text' size='60' name='lastName'></td> </tr>
+<tr> <td>Company</td> <td><input type='text' size='60' name='company'></td> </tr>
+<tr> <td>Street Address</td> <td><input type='text' size='60' name='address'></td> </tr>
+<tr> <td>City, State Zip</td>
+<td><input type='text' size='36' name='city'>,&nbsp; 
+<input type='text' size='4' name='state' maxlength='2'> &nbsp;&nbsp;
+<input type='text' size='10' name='zip' maxlength='12'>
+<input type='hidden' name='country' value='USA' />
+</td>
+</tr>
+<tr> <td>Phone Number</td> <td><input type='text' size='60' name='phoneNumber'></td> </tr>
+<tr> <td>Email Address</td> <td><input type='text' size='60' name='email'></td> </tr>
+
+<!-- INSERT SPECIFIC PAY FORM FIELDS HERE -->
+        <tr>
+          <td>Donation Amount</td>
+          <td>$
+            <input type='text' maxlength='10' name='amount' size='20' /></td>
+        </tr>
+        <tr>
+          <td>Memorial Donation <br />
+            (optional)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>In memory of:</td>
+          <td><input type='text' size='60' name='memorialName' /></td>
+        </tr>
+        <tr>
+          <td>Acknowledge To:</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td><input type='text' size='60' name='memorialFromName' /></td>
+        </tr>
+        <tr>
+          <td>Address </td>
+          <td><input type='text' size='60' name='memorialFromAddr' /></td>
+        </tr>
+        <tr>
+          <td>City, State Zip </td>
+          <td><input type='text' size='36' name='memorialFromCity' />
+            , &nbsp;
+            <input type='text' size='4' name='memorialFromState' />
+            &nbsp;&nbsp;
+            <input type='text' size='12' name='memorialFromZip' /></td>
+        </tr>
+<!-- END OF SPECIFIC PAY FORM FIELDS HERE -->
+        <tr>
+          <td>Opt In?</td>
+          <td><input type='checkbox' name='emailOptIn' checked="checked" />
+            The VMOA may contact me by email in the future </td>
+        </tr>
+        <tr>
+          <td>Please send me <br />
+            more information:</td>
+          <td><input type='checkbox' name='docentVolunteerInfo' />
+            Becoming a Docent Volunteer<br />
+            <input type='checkbox' name='volunteerTimeExpertise' />
+            Volunteering time and expertise<br />
+            <input type='checkbox' name='corporateSponsorship' />
+            Corporate Sponsorship<br />
+            <input type='checkbox' name='endowmentFund' />
+            VMOA Endowment Fund
+            </p></td>
+        </tr>
+        <tr>
+          <td>Comments:</td>
+          <td><textarea name='message' rows='6' cols='50'></textarea></td>
+        </tr>
+      </table>
+      <center>
+        <input type='submit' value='Proceed to Confirmation Page' />
+      </center>
+    </form>
+    </td>
+    </tr>
+    </table>
+    </center>
+ <!-- END OF FORM -->
