@@ -1,0 +1,101 @@
+<!-- BEGINNING OF FORM -->
+<form method='post' action='http://www.rfo.org/pay/getHostedPaymentForm.php'>
+<input type='hidden' name='description' value='Subscription to VMOA, TaxID 47-0877393' />
+<input type='hidden' name='origin' value='subscribe' />
+<center>
+<table border='0' cellspacing='0' cellpadding='6'>
+<tr> <td>First Name</td> <td><input type='text' size='60' name='firstName'></td> </tr>
+<tr> <td>Last Name</td> <td><input type='text' size='60' name='lastName'></td> </tr>
+<tr> <td>Company</td> <td><input type='text' size='60' name='company'></td> </tr>
+<tr> <td>Street Address</td> <td><input type='text' size='60' name='address'></td> </tr>
+<tr> <td>City, State Zip</td>
+<td><input type='text' size='36' name='city'>,&nbsp; 
+<input type='text' size='4' name='state' maxlength='2'> &nbsp;&nbsp;
+<input type='text' size='10' name='zip' maxlength='12'>
+<input type='hidden' name='country' value='USA' />
+</td>
+</tr>
+<tr> <td>Phone Number</td> <td><input type='text' size='60' name='phoneNumber'></td> </tr>
+<tr> <td>Email Address</td> <td><input type='text' size='60' name='email'></td> </tr>
+
+<!-- BEGINNING OF PAY FORM SPECIFIC FIELDS -->
+        <tr>
+          <td>Subscriber Levels<br />
+            (one year subscription)</td>
+          <td><input type='radio' name='amount' value='20.00' />
+            Star (under 16 years old) $20.00<br />
+            <input type='radio' name='amount' value='35.00' checked="checked" />
+            Nova (individual) $35.00<br />
+            <input type='radio' name='amount' value='50.00' />
+            Binary (couple) $50.00<br />
+            <input type='radio' name='amount' value='75.00' />
+            Constellation (family) $75.00 </td>
+        </tr>
+        <tr>
+          <td>New or Renew?</td>
+          <td><input type='radio' name='subscriberType' value='New' checked="checked" />
+            New Subscriber<br />
+            <input type='radio' name='subscriberType' value='Renew' />
+            Renewal </td>
+        </tr>
+        <tr>
+          <td> Gift To (optional):</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Gift Name</td>
+          <td><input type='text' size='60' name='giftToName' /></td>
+        </tr>
+        <tr>
+          <td>Gift Address</td>
+          <td><input type='text' size='60' name='giftToAddr' /></td>
+        </tr>
+        <tr>
+          <td>Gift City, State Zip</td>
+          <td><input type='text' size='36' name='giftToCity' />
+            ,&nbsp;
+            <input type='text' size='4' name='giftToState' maxlength='2' />
+            &nbsp;&nbsp;
+            <input type='text' size='12' name='giftToZip' maxlength='10' /></td>
+        </tr>
+        <tr>
+          <td>Gift Phone</td>
+          <td><input type='text' size='60' name='giftToPhone' /></td>
+        </tr>
+        <tr>
+          <td>Gift Email</td>
+          <td><input type='text' size='60' name='giftToEmail' /></td>
+        </tr>
+<!-- END OF PAY FORM SPECIFIC FIELDS -->
+        <tr>
+          <td>Opt In?</td>
+          <td><input type='checkbox' name='emailOptIn' checked="checked" />
+            The VMOA may contact me by email in the future </td>
+        </tr>
+        <tr>
+          <td>Please send me <br />
+            more information:</td>
+          <td><input type='checkbox' name='docentVolunteerInfo' />
+            Becoming a Docent Volunteer<br />
+            <input type='checkbox' name='volunteerTimeExpertise' />
+            Volunteering time and expertise<br />
+            <input type='checkbox' name='corporateSponsorship' />
+            Corporate Sponsorship<br />
+            <input type='checkbox' name='endowmentFund' />
+            VMOA Endowment Fund
+            </p></td>
+        </tr>
+        <tr>
+          <td>Comments:</td>
+          <td><textarea name='message' rows='6' cols='50'></textarea></td>
+        </tr>
+      </table>
+      <center>
+        <input type='submit' value='Proceed to Confirmation Page' />
+      </center>
+    </form>
+    </td>
+    </tr>
+    </table>
+    </center>
+<!-- END OF FORM -->

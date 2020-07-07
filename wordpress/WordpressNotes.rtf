@@ -1,0 +1,99 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 LucidaGrande;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid1\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww16200\viewh13200\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs36 \cf0 Notes on wordpress\
+Getting ssh set up on the AWS Wordpress servers. Instructions for Mac or Linux workstations.\
+\
+1. Check for existing ssh keys on your workstation\
+	\
+$ ls -al ~/.ssh\
+# Lists all the files in your .ssh directory, if they exist.  \
+\
+Examples\
+\pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
+\ls1\ilvl0\cf0 {\listtext	
+\f1 \uc0\u9642 
+\f0 	}id_rsa.pub   	# this is the public half of the key\
+{\listtext	
+\f1 \uc0\u9642 
+\f0 	}id_rsa		# this is the private half of the key\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \
+The \'93id\'94 part of the name is the default name of a generated public-private key pair.  You can name the key pair anything you like. For example, I have a key pair for my GitHub account and I have a github_rsa.pub and github_rsa set of files in my .ssh directory.\
+\
+The \'93rsa\'94 part to the name refers to the encryption method that the key is created within (rsa in this case). Other possible key encryption methods that you might see are dsa, ecdsa, ed25519.\
+\
+If you have an existing id_rsa.pub and id_rsa file, you have created a key once before. But if you\'92re like me, you took the short cut and didn\'92t create it with a passphrase.  That is not only insecure, but AWS won\'92t let you connect with a key that doesn\'92t have a passphrase or if you can\'92t remember your passphrase.  If you were better than me and you created your public-private key pair with a passphrase that you know, then you can skip step 2.\
+\
+2. Generate a new SSH key\
+\
+Here is where you specify the encryption method (rsa) and you should use your own email address for the -C option (a comment - the text just identifies the key pair file inside the key).\
+\
+$ ssh-keygen -t rsa -b 4096 -C \'93gloyer@gmail.com\'94\
+# Creates a new ssh key, using the provided domain username and computer name as a label\
+\
+You\'92ll be asked to enter a passphrase. If you just press Enter without typing in a passphrase, it will generate the key but you won\'92t be able to use it successfully with AWS servers.\
+\
+	Enter passphrase (empty for no passphrase): \
+	Enter same passphrase again: \
+\
+After you enter the passphrase twice, the same way(!), you\'92ll get messages about your new key pair.  A passphrase is just what it sounds like - a long text, the longer the better, that would be very difficult to decrypt.  I usually take a sentence out of a book I\'92m reading when I create the key pair.  Make sure to save the passphrase for later use. You use it very infrequently, so typing a passphrase is not too much of an annoyance, but it\'92s very annoying to not remember it, so record it in your password safe software.\
+\
+Your identification has been saved in /Users/username/.ssh/id_rsa.\
+Your public key has been saved in /Users/username/.ssh/id_rsa.pub.\
+The key fingerprint is:\
+nss2VhNB0Y62VIToM+/qYe3HS4TPXmrhuBxjUz4l/I8= your@email.com\
+\
+If you want to create a key pair file for just the Wordpress site, for example, you might change the command to:\
+\
+$ ssh-keygen -t rsa -b 4096 -C \'93gloyer@wp.rfo.org\'94 -f \'93wprfo\'94\
+\
+This will create the two files, wprfo_rsa.pub and wprfo_rsa\
+\
+3. Add your key to the ssh-agent.\
+(I haven\'92t found this is necessary)\
+\
+To configure the ssh-agent program to use your SSH key, first ensure ssh-agent is enabled.\
+\
+# start the ssh-agent in the background\
+$ eval $(ssh-agent -s)\
+\
+The command reports, if successful, the PID of the ssh-agent.\
+\
+Then, add your SSH key to the ssh-agent.\
+\
+$ ssh-add ~/.ssh/id_rsa\
+\
+This is the private key file.\
+\
+4. Add your SSH key to the server.\
+To add your public SSH key to the server, you\'92ll copy the public SSH key you just created to the server. Substitute \'93username\'94 with your username on the server, and \'93server.address.com\'94 with the domain address or IP address of your server:\
+\
+	$ cat ~/.ssh/id_rsa.pub | ssh username@server.address.com 'cat >> ~/.ssh/authorized_keys'\
+\
+Alternatively, send the contents of your id_rsa.pub file to a server administrator.  The admin can add the key to the ~/.ssh/authorized_keys file in your account.\
+\
+When you connect for the first time, you will be prompted for your passphrase:\
+\
+$ ssh gloyer@44.225.244.140\
+# note that we\'92ve had to use the IP address of the server, DNS isn\'92t set up? You can add something like wp.rfo.org in your hosts file, if you prefer\
+\
+	Connecting to 44.225.244.140 [44.225.244.140]\
+	Enter passphrase for key '/Users/gloyer/.ssh/id_rsa': \
+\
+Once you enter the passphrase correctly (you get three tries before it disconnects you), your local ssh records the Wordpress host in the known_hosts file on your workstation, and the server puts your key information into the authorized_keys file on the server in your account in the .ssh directory.\
+\
+From now on, you can connect to the server without being challenged for the passphrase or your password on the server - a trust relationship has been established between your workstation and the server.\
+\
+With ssh established, you can now use ssh to log into the server using your account and utilities like sftp and scp (to copy files to and from the server to your workstation).\
+\
+ \
+\
+\
+}
