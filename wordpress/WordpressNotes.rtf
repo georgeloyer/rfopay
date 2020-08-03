@@ -1,5 +1,6 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2513
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 LucidaGrande;}
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 LucidaGrande;
+}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
 {\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{square\}}{\leveltext\leveltemplateid1\'01\uc0\u9642 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
@@ -8,7 +9,74 @@
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\fs36 \cf0 Notes on wordpress\
-Getting ssh set up on the AWS Wordpress servers. Instructions for Mac or Linux workstations.\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 7/1/2020\
+Upgraded to Elite version of GravityForms, total cost of license is $259/year\
+\
+
+\f1\b Added curl to allow authorize.net settings to be set up.\
+
+\f0\b0 (But we ended up deciding not to use authorize.net, using PayPal instead)\
+Enabling curl in PHP\
+Login:\
+	$ ssh gloyer@44.225.244.140 \
+Install php7.4-curl\
+	sudo apt-get install php7.4-curl\
+Locate your php.ini file.\
+	/etc/php/7.4/apache2/php.ini\
+Open the PHP.ini in an editor\
+	sudo vi /etc/php/7.4/apache2/php.ini\
+Search or find the following : \
+	';extension=curl\'92\
+Uncomment this by removing the semi-colon ';' before it.\
+Save and Close php.ini.\
+Restart Apache.\
+	/etc/init.d/apache2 restart\
+\
+6/24/2020\
+
+\f1\b INSTALLING GRAVITY FORMS plugin to Wordpress
+\f0\b0  \
+Installed unzip to allow plugins to be installed.\
+	sudo apt install unzip\
+\
+Wordpress plugins are located in:\
+	/usr/share/wordpress/wp-content-plugins/\
+\
+Each plugin has its own folder. The plugins usually come in a zip file. You can scp the file to \
+The plugins folder and then unzip it. You can do this from your own user, all of the unzipped files are readable by Other (644).\
+\
+Once you\'92ve copied a zip file into the plugins folder and unzipped it, delete the zip file. The plugin will now show up in the WordPress user interface in the installed plugins page.\
+\
+Installed 6/24/2020\
+	gravityforms\
+	gravityformscli\
+	gravityformsconstantcontact\
+	gravityformsdebug\
+	gravityformspaypal\
+	gravityformsppcp\
+\
+{\field{\*\fldinst{HYPERLINK "https://docs.gravityforms.com/?_ga=2.152363897.1526313546.1593014907-2175331.1592234218"}}{\fldrslt GravityForms documentation}}\
+\
+{\field{\*\fldinst{HYPERLINK "https://www.gravityforms.com/my-account/licenses/"}}{\fldrslt GravityForms License Page}}\
+Requires a login to the GravityForms site\
+	GravityFormsPro license 4c51eae960c2ebf86e925f570ab14f58\
+	Renews on 6/22/2021 via PayPal account\
+\
+Wp.rfo.org credentials\
+gloyer@gmail.com\
+IP address: 44.225.244.140\
+Username: itadm\
+Password: (see your password bank)\
+\
+scp gravityforms_2.4.18.10.zip  itadm@44.225.244.140/wp-content/plugins/\
+\
+6/20/2020\
+
+\f1\b SETTING UP SSH ON AWS WORDPRESS SERVERS
+\f0\b0 \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 Getting ssh set up on the AWS Wordpress servers. Instructions for Mac or Linux workstations.\
 \
 1. Check for existing ssh keys on your workstation\
 	\
@@ -18,10 +86,10 @@ $ ls -al ~/.ssh\
 Examples\
 \pard\tx220\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\li720\fi-720\pardirnatural\partightenfactor0
 \ls1\ilvl0\cf0 {\listtext	
-\f1 \uc0\u9642 
+\f2 \uc0\u9642 
 \f0 	}id_rsa.pub   	# this is the public half of the key\
 {\listtext	
-\f1 \uc0\u9642 
+\f2 \uc0\u9642 
 \f0 	}id_rsa		# this is the private half of the key\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \
